@@ -34,7 +34,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::two_sum::Solution;
+    use crate::prob_0001_two_sum::Solution;
 
     #[test]
     fn solution_works() {

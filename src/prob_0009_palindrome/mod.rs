@@ -25,7 +25,7 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::palindrome::Solution;
+    use crate::prob_0009_palindrome::Solution;
 
     #[test]
     fn solution_works() {
