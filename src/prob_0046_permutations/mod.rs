@@ -34,7 +34,7 @@ mod tests {
     use crate::prob_0046_permutations::Solution;
 
     #[test]
-    fn permute_works() {
+    fn solution_works() {
         assert_eq!(Solution::permute(vec![1]), vec![vec![1]]);
         assert_eq!(Solution::permute(vec![1, 2]), vec![vec![1, 2], vec![2, 1]]);
         assert_eq!(
