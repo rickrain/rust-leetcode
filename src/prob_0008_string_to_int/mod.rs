@@ -7,10 +7,10 @@ pub struct Solution;
 impl Solution {
     pub fn my_atoi(s: String) -> i32 {
         let num_str = s.trim();
-        
+
         // This will be the result'ing String to try to parse to i32 at the end.
         let mut result = String::with_capacity(num_str.len());
-        
+
         // Get an iterator for the characters
         let mut num_str_chars = num_str.chars();
 
@@ -46,7 +46,7 @@ impl Solution {
                 Some('-') => i32::MIN,
                 _ => i32::MAX,
             }
-        } else { 
+        } else {
             if sign == Some('-') {
                 result.insert(0, sign.unwrap());
             }
