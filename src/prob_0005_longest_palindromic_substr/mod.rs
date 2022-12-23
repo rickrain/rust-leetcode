@@ -21,7 +21,7 @@ impl Solution {
     }
 
     fn find_longest_palindrome(s: &str) -> &str {
-        let mut result = &s[0..1];
+        let mut result = "";
 
         // If all the chars are the same, then the entire string is a palindrome.
         if s.chars().eq(s.chars().rev()) {
