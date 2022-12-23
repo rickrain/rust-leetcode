@@ -22,12 +22,20 @@ impl Solution {
 
     fn find_longest_palindrome(s: &str) -> &str {
         let mut result = &s[0..1];
+
+        // If all the chars are the same, then the entire string is a palindrome.
+        if s.chars().eq(s.chars().rev()) {
+            return s;
+        }
+
         for (i, _c) in s.chars().enumerate() {
+            // Expand outward from a single char
             let mut last_palindrome = Self::expand_to_longest_palindrome(i as i32, i as usize, s);
             if last_palindrome.len() > result.len() {
                 result = last_palindrome;
             }
 
+            // Expand outward from two adjacent chars
             last_palindrome = Self::expand_to_longest_palindrome(i as i32, i + 1_usize, s);
             if last_palindrome.len() > result.len() {
                 result = last_palindrome;
