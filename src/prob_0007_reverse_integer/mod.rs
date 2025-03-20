@@ -6,15 +6,18 @@ pub struct Solution;
 #[allow(dead_code)]
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
-        let x_str = x.unsigned_abs().to_string();
+        let x_str = x.to_string();
         let mut result = String::with_capacity(x_str.len() + 1);
 
-        if x < 0 {
-            result.push('-');
-        }
+        x_str.chars().rev().for_each(|c| {
+            if c == '-' {
+                result.insert(0, c);
+            } else {
+                result.push(c);
+            }
+        });
 
-        x_str.chars().rev().for_each(|c| result.push(c));
-
+        println!("result = {result}");
         result.parse::<i32>().unwrap_or_default()
     }
 }
