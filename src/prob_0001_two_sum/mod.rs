@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 0 ms, faster than 100.00% of Rust online submissions for Two Sum.
-// Memory Usage: 2.4 MB, less than 33.11% of Rust online submissions for Two Sum.
-
 use std::collections::HashMap;
 
 #[allow(dead_code)]

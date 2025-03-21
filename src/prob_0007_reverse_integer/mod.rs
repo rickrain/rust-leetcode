@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 0 ms, faster than 100.00% of Rust online submissions for Reverse Integer.
-// Memory Usage: 2.1 MB, less than 67.57% of Rust online submissions for Reverse Integer.
-
 #[allow(dead_code)]
 impl Solution {
     pub fn reverse(x: i32) -> i32 {

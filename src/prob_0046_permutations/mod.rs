@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 3 ms, faster than 50.86% of Rust online submissions for Permutations.
-// Memory Usage: 2.2 MB, less than 61.21% of Rust online submissions for Permutations.
-
 #[allow(dead_code)]
 impl Solution {
     pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {

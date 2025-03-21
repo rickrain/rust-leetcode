@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 4 ms, faster than 91.41% of Rust online submissions for Palindrome Number.
-// Memory Usage: 2.1 MB, less than 68.89% of Rust online submissions for Palindrome Number.
-
 #[allow(dead_code)]
 impl Solution {
     pub fn is_palindrome(x: i32) -> bool {
