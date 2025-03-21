@@ -4,7 +4,7 @@ pub struct Solution;
 impl Solution {
     pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
         match nums.len() {
-            1 => return vec![nums],
+            1 => vec![nums],
             _ => {
                 // result is the outer-most vector
                 let mut result: Vec<Vec<i32>> = vec![];
@@ -17,7 +17,7 @@ impl Solution {
                     // Recursively call permute() on the remaining numbers to create a new
                     // permutation. Merge the two permutations together.
                     for p in Solution::permute(rem_nums) {
-                        result.push(vec![vec![*x], p].concat());
+                        result.push([vec![*x], p].concat());
                     }
                 }
                 result
