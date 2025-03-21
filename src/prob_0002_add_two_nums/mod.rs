@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 3 ms, faster than 88.17% of Rust online submissions for Add Two Numbers.
-// Memory Usage: 2 MB, less than 94.93% of Rust online submissions for Add Two Numbers.
-
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {

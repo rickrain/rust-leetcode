@@ -2,9 +2,6 @@ use std::{char, collections::HashMap};
 
 pub struct Solution;
 
-// Runtime: 4 ms, faster than 80.02% of Rust online submissions for Longest Substring Without Repeating Characters.
-// Memory Usage: 2.2 MB, less than 42.42% of Rust online submissions for Longest Substring Without Repeating Characters.
-
 // abcabcbb
 #[allow(dead_code)]
 impl Solution {

@@ -1,8 +1,5 @@
 pub struct Solution;
 
-// Runtime: 0 ms, faster than 100.00% of Rust online submissions for String to Integer (atoi).
-// Memory Usage: 2.1 MB, less than 28.32% of Rust online submissions for String to Integer (atoi).
-
 #[allow(dead_code)]
 impl Solution {
     pub fn my_atoi(s: String) -> i32 {
