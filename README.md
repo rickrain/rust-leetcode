@@ -1,3 +1,5 @@
+[![CI](https://github.com/rickrain/rust-leetcode/actions/workflows/ci.yml/badge.svg)](https://github.com/rickrain/rust-leetcode/actions/workflows/ci.yml)
+
 # Introduction
 
 This repo contains a collection of leetcode challenges I've completed using Rust.
