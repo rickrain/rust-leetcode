@@ -17,7 +17,6 @@ impl Solution {
             }
         });
 
-        println!("result = {result}");
         result.parse::<i32>().unwrap_or_default()
     }
 }
