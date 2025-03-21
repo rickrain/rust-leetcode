@@ -30,7 +30,7 @@ impl Solution {
 
         for (i, _c) in s.chars().enumerate() {
             // Expand outward from a single char
-            let mut last_palindrome = Self::expand_to_longest_palindrome(i as i32, i as usize, s);
+            let mut last_palindrome = Self::expand_to_longest_palindrome(i as i32, i, s);
             if last_palindrome.len() > result.len() {
                 result = last_palindrome;
             }
