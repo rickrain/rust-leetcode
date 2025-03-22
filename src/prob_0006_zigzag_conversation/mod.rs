@@ -1,15 +1,86 @@
 pub struct Solution;
 
+const INCREASING: i32 = 1;
+const DECREASING: i32 = -1;
+
+struct Oscillator {
+    min: i32,
+    max: i32,
+    current: i32,
+    direction: i32,
+}
+
+impl Oscillator {
+    fn new(min: i32, max: i32) -> Self {
+        Oscillator {
+            min,
+            max,
+            current: min,
+            direction: INCREASING,
+        }
+    }
+}
+
+impl Iterator for Oscillator {
+    type Item = i32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let x = self.current;
+
+        if self.min == self.max {
+            return Some(x);
+        } else if self.current == self.min {
+            self.direction = INCREASING;
+        } else if self.current == self.max {
+            self.direction = DECREASING;
+        }
+
+        self.current += self.direction;
+
+        Some(x)
+    }
+}
+
 #[allow(dead_code)]
 impl Solution {
     pub fn convert(s: String, num_rows: i32) -> String {
-        "foobar".to_string()
+        let mut v = vec![String::new(); num_rows as usize];
+        let s_bytes = s.as_bytes();
+
+        let osc = Oscillator::new(0, num_rows - 1);
+        let osc_vals: Vec<i32> = osc.take(s.len()).collect();
+
+        for osc_val in osc_vals.iter().enumerate() {
+            v[*osc_val.1 as usize].push(char::from(s_bytes[osc_val.0]));
+        }
+
+        let mut result = String::new();
+        for line in v {
+            result.push_str(&line);
+        }
+
+        result
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::prob_0006_zigzag_conversation::Solution;
+    use crate::prob_0006_zigzag_conversation::{Oscillator, Solution};
+
+    #[test]
+    fn oscillator_works() {
+        let osc = Oscillator::new(0, 4);
+        let osc_vals: Vec<i32> = osc.take(7).collect();
+        assert_eq!(osc_vals, vec![0, 1, 2, 3, 4, 3, 2,]);
+
+        let osc = Oscillator::new(-2, 2);
+        let osc_vals: Vec<i32> = osc.take(12).collect();
+        assert_eq!(osc_vals, vec![-2, -1, 0, 1, 2, 1, 0, -1, -2, -1, 0, 1]);
+
+        let osc = Oscillator::new(0, 0);
+        let osc_vals: Vec<i32> = osc.take(4).collect();
+        assert_eq!(osc_vals, vec![0, 0, 0, 0]);
+    }
 
     #[test]
     fn solution_works() {
@@ -21,9 +92,6 @@ mod tests {
             Solution::convert("PAYPALISHIRING".to_string(), 4),
             "PINALSIGYAHRPI".to_string()
         );
-        assert_eq!(
-            Solution::convert("A".to_string(), 1),
-            "A".to_string()
-        );
+        assert_eq!(Solution::convert("A".to_string(), 1), "A".to_string());
     }
 }
