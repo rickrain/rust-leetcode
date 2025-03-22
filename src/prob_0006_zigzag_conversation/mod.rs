@@ -1,21 +1,21 @@
+use std::ops::Range;
+
 pub struct Solution;
 
 const INCREASING: i32 = 1;
 const DECREASING: i32 = -1;
 
 struct Oscillator {
-    min: i32,
-    max: i32,
+    range: Range<i32>,
     current: i32,
     direction: i32,
 }
 
 impl Oscillator {
-    fn new(min: i32, max: i32) -> Self {
+    fn new(range: Range<i32>) -> Self {
         Oscillator {
-            min,
-            max,
-            current: min,
+            range: range.clone(),
+            current: range.start,
             direction: INCREASING,
         }
     }
@@ -27,11 +27,11 @@ impl Iterator for Oscillator {
     fn next(&mut self) -> Option<Self::Item> {
         let x = self.current;
 
-        if self.min == self.max {
+        if self.range.start == self.range.end-1 {
             return Some(x);
-        } else if self.current == self.min {
+        } else if self.current == self.range.start {
             self.direction = INCREASING;
-        } else if self.current == self.max {
+        } else if self.current == self.range.end-1 {
             self.direction = DECREASING;
         }
 
@@ -47,7 +47,7 @@ impl Solution {
         let mut v = vec![String::new(); num_rows as usize];
         let s_bytes = s.as_bytes();
 
-        let osc = Oscillator::new(0, num_rows - 1);
+        let osc = Oscillator::new(0..num_rows);
         let osc_vals: Vec<i32> = osc.take(s.len()).collect();
 
         for osc_val in osc_vals.iter().enumerate() {
@@ -69,17 +69,13 @@ mod tests {
 
     #[test]
     fn oscillator_works() {
-        let osc = Oscillator::new(0, 4);
+        let osc = Oscillator::new(0..4);
         let osc_vals: Vec<i32> = osc.take(7).collect();
-        assert_eq!(osc_vals, vec![0, 1, 2, 3, 4, 3, 2,]);
+        assert_eq!(osc_vals, vec![0, 1, 2, 3, 2, 1, 0]);
 
-        let osc = Oscillator::new(-2, 2);
+        let osc = Oscillator::new(-2..2);
         let osc_vals: Vec<i32> = osc.take(12).collect();
-        assert_eq!(osc_vals, vec![-2, -1, 0, 1, 2, 1, 0, -1, -2, -1, 0, 1]);
-
-        let osc = Oscillator::new(0, 0);
-        let osc_vals: Vec<i32> = osc.take(4).collect();
-        assert_eq!(osc_vals, vec![0, 0, 0, 0]);
+        assert_eq!(osc_vals, vec![-2, -1, 0, 1, 0, -1, -2, -1, 0, 1, 0, -1]);
     }
 
     #[test]
@@ -93,5 +89,6 @@ mod tests {
             "PINALSIGYAHRPI".to_string()
         );
         assert_eq!(Solution::convert("A".to_string(), 1), "A".to_string());
+        assert_eq!(Solution::convert("AB".to_string(), 1), "AB".to_string());
     }
 }
