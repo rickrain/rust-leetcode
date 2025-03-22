@@ -27,11 +27,11 @@ impl Iterator for Oscillator {
     fn next(&mut self) -> Option<Self::Item> {
         let x = self.current;
 
-        if self.range.start == self.range.end-1 {
+        if self.range.start == self.range.end - 1 {
             return Some(x);
         } else if self.current == self.range.start {
             self.direction = INCREASING;
-        } else if self.current == self.range.end-1 {
+        } else if self.current == self.range.end - 1 {
             self.direction = DECREASING;
         }
 
