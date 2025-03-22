@@ -1,54 +1,40 @@
-use std::{char, collections::HashMap};
-
 pub struct Solution;
 
-// abcabcbb
 #[allow(dead_code)]
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
-        let mut char_map: HashMap<char, i32> = HashMap::with_capacity(s.len() / 2);
-        let chars = s.chars();
-
-        let mut substr_start = 0;
-        let mut substr_end = 0;
-
-        let mut max_substr_len = 0;
-        let mut curr_substr_len = 0;
-
-        let s_bytes = s.as_bytes();
-
-        for (i, c) in chars.enumerate() {
-            let mut counter = char_map.entry(c).or_insert(0);
-            *counter += 1;
-
-            if *counter > 1 {
-                max_substr_len = std::cmp::max(curr_substr_len, max_substr_len);
-
-                // Walk-up substr_start until we find the current char
-                loop {
-                    let start_char = &s_bytes[substr_start];
-                    let x = char::from(*start_char);
-
-                    counter = char_map.get_mut(&x).unwrap();
-                    *counter -= 1;
-                    substr_start += 1;
-
-                    if x == c {
-                        break;
-                    }
-                }
-
-                substr_end = i + 1;
-            } else {
-                substr_end += 1;
-            }
-
-            curr_substr_len = substr_end - substr_start;
+        if s.is_empty() {
+            return 0;
         }
 
-        max_substr_len = std::cmp::max(curr_substr_len, max_substr_len);
+        let mut chars = s.char_indices();
+        chars.next();
+        let mut longest_substr = 1;
+        let mut curr_substr_start_idx = 0;
+        let mut curr_substr = &s[..=0];
 
-        max_substr_len as i32
+        for (idx, c) in chars {
+            if curr_substr.contains(c) {
+                if curr_substr.len() > longest_substr {
+                    longest_substr = curr_substr.len();
+                }
+
+                while curr_substr_start_idx < idx {
+                    if s.as_bytes()[curr_substr_start_idx] as char == c {
+                        curr_substr_start_idx += 1;
+                        break;
+                    }
+                    curr_substr_start_idx += 1;
+                }
+            }
+            curr_substr = &s[curr_substr_start_idx..=idx];
+        }
+
+        if curr_substr.len() > longest_substr {
+            longest_substr = curr_substr.len();
+        }
+
+        longest_substr as i32
     }
 }
 
@@ -75,8 +61,16 @@ mod tests {
         assert_eq!(Solution::length_of_longest_substring("ab".to_string()), 2);
         assert_eq!(Solution::length_of_longest_substring("dvdf".to_string()), 3);
         assert_eq!(
+            Solution::length_of_longest_substring("dvadf".to_string()),
+            4
+        );
+        assert_eq!(
             Solution::length_of_longest_substring("anviaj".to_string()),
             5
         );
+        assert_eq!(
+            Solution::length_of_longest_substring("nfpdmpi".to_string()),
+            5
+        )
     }
 }

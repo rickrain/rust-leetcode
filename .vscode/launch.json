@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // To debug in VS Code, 
+            // - cargo build
+            // - cargo test --no-run
+            // - set your breakpoint and F5
+            "name": "Debug Rust Test",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/target/debug/deps/challenges-9ab9743001d528a1", // use "cargo test --no-run" to find this value
+            "args": ["--nocapture", "solution_works"],
+            "cwd": "${workspaceFolder}",
+            "sourceLanguages": ["rust"],
+            "env": {
+                "RUST_BACKTRACE": "1"
+            }
+    ]
+} 
