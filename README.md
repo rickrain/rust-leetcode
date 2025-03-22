@@ -10,6 +10,7 @@ Each challenge in this repo is organized into a module with tests specific to th
 - [add two numbers](./src/prob_0002_add_two_nums/README.md)
 - [longest substring](./src/prob_0003_longest_substring/README.md)
 - [longest palindromic substr](./src/prob_0005_longest_palindromic_substr/README.md)
+- [zigzag conversation](./src/prob_0006_zigzag_conversation/README.md)
 - [reverse integer](./src/prob_0007_reverse_integer/README.md)
 - [string to int](./src/prob_0008_string_to_int/README.md)
 - [palindrome](./src/prob_0009_palindrome/README.md)
