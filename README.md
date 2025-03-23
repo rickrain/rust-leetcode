@@ -9,6 +9,7 @@ Each challenge in this repo is organized into a module with tests specific to th
 - [two sum](./src/prob_0001_two_sum/README.md)
 - [add two numbers](./src/prob_0002_add_two_nums/README.md)
 - [longest substring](./src/prob_0003_longest_substring/README.md)
+- [median of two sorted arrays](./src/prob_0004_median_two_sorted_arrays/README.md)
 - [longest palindromic substr](./src/prob_0005_longest_palindromic_substr/README.md)
 - [zigzag conversation](./src/prob_0006_zigzag_conversation/README.md)
 - [reverse integer](./src/prob_0007_reverse_integer/README.md)
