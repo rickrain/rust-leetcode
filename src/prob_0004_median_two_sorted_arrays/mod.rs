@@ -28,20 +28,12 @@ impl Solution {
                 let mid2 = ((nums1.len() + nums2.len() + 1) / 2) - mid1;
 
                 // Get the values on either side of the partition for the smaller array
-                let l1 = if mid1 == 0 { i32::MIN } else { nums1[mid1 - 1] };
-                let r1 = if mid1 >= nums1.len() {
-                    i32::MAX
-                } else {
-                    nums1[mid1]
-                };
+                let l1 = if mid1 == 0           { i32::MIN } else { nums1[mid1 - 1] };
+                let r1 = if mid1 >= nums1.len() { i32::MAX } else { nums1[mid1]     };
 
                 // Get the values on either side of the partition for the larger array
-                let l2 = if mid2 == 0 { i32::MIN } else { nums2[mid2 - 1] };
-                let r2 = if mid2 >= nums2.len() {
-                    i32::MAX
-                } else {
-                    nums2[mid2]
-                };
+                let l2 = if mid2 == 0           { i32::MIN } else { nums2[mid2 - 1] };
+                let r2 = if mid2 >= nums2.len() { i32::MAX } else { nums2[mid2]     };
 
                 // We're done partitioning the array and can calculate the median
                 if l1 <= r2 && l2 <= r1 {
@@ -65,11 +57,13 @@ impl Solution {
 
     fn find_median(nums: Vec<i32>) -> f64 {
         if nums.len() % 2 == 0 {
+            // Return the average of the two numbers in the middle of the array
             let idx1 = (nums.len() - 1) / 2;
             let idx2 = nums.len() / 2;
 
             (nums[idx1] + nums[idx2]) as f64 / 2_f64
         } else {
+            // Return the number in the middle of the array
             nums[nums.len() / 2] as f64
         }
     }
@@ -81,29 +75,29 @@ mod tests {
 
     #[test]
     fn solution_works() {
-        // assert_eq!(
-        //     Solution::find_median_sorted_arrays(vec![1, 3], vec![2]),
-        //     2.0
-        // );
-        // assert_eq!(
-        //     Solution::find_median_sorted_arrays(vec![1, 2], vec![3, 4]),
-        //     2.5
-        // );
-        // assert_eq!(
-        //     Solution::find_median_sorted_arrays(
-        //         vec![1, 12, 15, 26, 38],
-        //         vec![2, 13, 17, 30, 45, 60]
-        //     ),
-        //     17.0
-        // );
-        // assert_eq!(
-        //     Solution::find_median_sorted_arrays(vec![0, 0], vec![0, 0]),
-        //     0.0
-        // );
-        // assert_eq!(
-        //     Solution::find_median_sorted_arrays(vec![], vec![1, 2, 3, 4]),
-        //     2.5
-        // );
+        assert_eq!(
+            Solution::find_median_sorted_arrays(vec![1, 3], vec![2]),
+            2.0
+        );
+        assert_eq!(
+            Solution::find_median_sorted_arrays(vec![1, 2], vec![3, 4]),
+            2.5
+        );
+        assert_eq!(
+            Solution::find_median_sorted_arrays(
+                vec![1, 12, 15, 26, 38],
+                vec![2, 13, 17, 30, 45, 60]
+            ),
+            17.0
+        );
+        assert_eq!(
+            Solution::find_median_sorted_arrays(vec![0, 0], vec![0, 0]),
+            0.0
+        );
+        assert_eq!(
+            Solution::find_median_sorted_arrays(vec![], vec![1, 2, 3, 4]),
+            2.5
+        );
         assert_eq!(
             Solution::find_median_sorted_arrays(vec![1], vec![2, 3, 4, 5, 6]),
             3.5
