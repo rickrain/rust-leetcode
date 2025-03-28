@@ -28,12 +28,20 @@ impl Solution {
                 let mid2 = ((nums1.len() + nums2.len() + 1) / 2) - mid1;
 
                 // Get the values on either side of the partition for the smaller array
-                let l1 = if mid1 == 0           { i32::MIN } else { nums1[mid1 - 1] };
-                let r1 = if mid1 >= nums1.len() { i32::MAX } else { nums1[mid1]     };
+                let l1 = if mid1 == 0 { i32::MIN } else { nums1[mid1 - 1] };
+                let r1 = if mid1 >= nums1.len() {
+                    i32::MAX
+                } else {
+                    nums1[mid1]
+                };
 
                 // Get the values on either side of the partition for the larger array
-                let l2 = if mid2 == 0           { i32::MIN } else { nums2[mid2 - 1] };
-                let r2 = if mid2 >= nums2.len() { i32::MAX } else { nums2[mid2]     };
+                let l2 = if mid2 == 0 { i32::MIN } else { nums2[mid2 - 1] };
+                let r2 = if mid2 >= nums2.len() {
+                    i32::MAX
+                } else {
+                    nums2[mid2]
+                };
 
                 // We're done partitioning the array and can calculate the median
                 if l1 <= r2 && l2 <= r1 {
