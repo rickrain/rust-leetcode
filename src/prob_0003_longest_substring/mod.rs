@@ -7,18 +7,12 @@ impl Solution {
             return 0;
         }
 
-        let mut chars = s.char_indices();
-        chars.next();
         let mut longest_substr = 1;
         let mut curr_substr_start_idx = 0;
         let mut curr_substr = &s[..=0];
 
-        for (idx, c) in chars {
+        for (idx, c) in s.char_indices() {
             if curr_substr.contains(c) {
-                if curr_substr.len() > longest_substr {
-                    longest_substr = curr_substr.len();
-                }
-
                 while curr_substr_start_idx < idx {
                     if s.as_bytes()[curr_substr_start_idx] as char == c {
                         curr_substr_start_idx += 1;
@@ -27,11 +21,9 @@ impl Solution {
                     curr_substr_start_idx += 1;
                 }
             }
+            
             curr_substr = &s[curr_substr_start_idx..=idx];
-        }
-
-        if curr_substr.len() > longest_substr {
-            longest_substr = curr_substr.len();
+            longest_substr = longest_substr.max(curr_substr.len());
         }
 
         longest_substr as i32
