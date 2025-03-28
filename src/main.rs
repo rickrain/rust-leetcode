@@ -7,6 +7,7 @@ mod prob_0006_zigzag_conversation;
 mod prob_0007_reverse_integer;
 mod prob_0008_string_to_int;
 mod prob_0009_palindrome;
+mod prob_0011_container_with_most_water;
 mod prob_0046_permutations;
 
 fn main() {}

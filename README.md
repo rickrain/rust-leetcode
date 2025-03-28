@@ -16,6 +16,7 @@ Each challenge in this repo is organized into a module with tests specific to th
 - [string to int](./src/prob_0008_string_to_int/README.md)
 - [palindrome](./src/prob_0009_palindrome/README.md)
 - [permutations](./src/prob_0046_permutations/README.md)
+- [container w/most water](./src/prob_0011_container_with_most_water/README.md)
 
 ## Running the challenges
 
