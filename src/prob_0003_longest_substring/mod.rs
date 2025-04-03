@@ -21,7 +21,7 @@ impl Solution {
                     curr_substr_start_idx += 1;
                 }
             }
-            
+
             curr_substr = &s[curr_substr_start_idx..=idx];
             longest_substr = longest_substr.max(curr_substr.len());
         }
